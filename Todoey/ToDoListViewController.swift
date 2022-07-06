@@ -44,7 +44,28 @@ class ToDoListViewController: UITableViewController {
     //MARK: Text input in AlertBox
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
+        var textField = UITextField()
         
+        
+        let alert = UIAlertController(title: "Add New Todoey Items", message: "hali", preferredStyle: .alert)
+        
+        present(alert, animated: true)
+        
+        let action = UIAlertAction(title: "Add Item", style: .default) { action in
+            
+            self.itemArray.append(textField.text!)
+            
+            self.tableView.reloadData()
+        }
+        
+        alert.addAction(action)
+        
+        alert.addTextField { alertTextField in
+            alertTextField.placeholder = "Create New Item"
+            textField = alertTextField
+            
+            
+        }
     }
     
     
